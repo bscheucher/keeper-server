@@ -8,7 +8,7 @@ import jwt from "jsonwebtoken";
 dotenv.config();
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 const SECRET_KEY =
   process.env.SECRET_KEY ||
   (() => {
@@ -38,8 +38,6 @@ db.connect((err) => {
     console.log("Database connected successfully");
   }
 });
-
-
 
 // Register a new user
 app.post("/api/register", async (req, res) => {
